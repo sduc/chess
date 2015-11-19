@@ -10,8 +10,12 @@ public class Queen extends Piece {
 
 	@Override
 	public Collection<Position> possibleMoves() {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Position> ret;
+		
+		ret = super.reachableColRow();
+		ret.addAll(super.reachableDiags());
+		
+		return ret;
 	}
 
 }

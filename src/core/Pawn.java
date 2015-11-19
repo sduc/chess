@@ -1,18 +1,56 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Pawn extends Piece {
 
-	public Pawn(Player o, Position p, ChessBoard b) {
+	enum Direction {
+		Up(1),
+		Down(-1);
+		
+		private int val;
+		
+		Direction(int d) {
+			val = d;
+		}
+		
+		public int toInt() {
+			return val;
+		}
+	}
+	
+	int direction;
+	
+	public Pawn(Player o, Position p, ChessBoard b, Direction direction) {
 		super(o,p,b);
-		// TODO Auto-generated constructor stub
+		this.direction = direction.toInt();
 	}
 
 	@Override
 	public Collection<Position> possibleMoves() {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Position> ret = new ArrayList<>();
+		int x = super.position().xOrd();
+		int y = super.position().yOrd();
+		Board<Piece> board = super.getBoard();
+		
+		Position p = new Position(x, y + direction);
+		if (board.contains(p) && board.get(p) == null)
+			ret.add(new Position(x, y + direction));
+		
+		p = new Position(x + 1, y + direction);
+		if (board.contains(p) &&
+				board.get(p) != null &&
+				!super.sameOwner(board.get(p))) {
+			ret.add(p);
+		}
+		p = new Position(x - 1, y + direction);
+		if (board.contains(p) &&
+				board.get(p) != null &&
+				!super.sameOwner(board.get(p))) {
+			ret.add(p);
+		}
+		// TODO: add prise en passant, first move (2 positions forward
 	}
 
 }
