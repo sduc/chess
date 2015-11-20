@@ -9,6 +9,12 @@ public class Knight extends Piece {
 		super(o,p,b);
 		// TODO Auto-generated constructor stub
 	}
+	
+	private void addInCollectionIfValid(Collection<Position> pos, Position p) {
+		if (super.canBeAt(p)) {
+			pos.add(p);
+		}
+	}
 
 	@Override
 	public Collection<Position> possibleMoves() {
@@ -16,23 +22,15 @@ public class Knight extends Piece {
 		int x = super.position().xOrd();
 		int y = super.position().yOrd();
 		
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x + 1, y + 2), super.getBoard());
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x - 1, y + 2), super.getBoard());
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x + 1, y - 2), super.getBoard());
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x - 1, y - 2), super.getBoard());
+		addInCollectionIfValid(ret, new Position(x + 1, y + 2));
+		addInCollectionIfValid(ret, new Position(x - 1, y + 2));
+		addInCollectionIfValid(ret, new Position(x + 1, y - 2));
+		addInCollectionIfValid(ret, new Position(x - 1, y - 2));
 		
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x + 2, y + 1), super.getBoard());
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x + 2, y - 1), super.getBoard());
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x - 2, y + 1), super.getBoard());
-		Position.addInCollectionIfOnBoard(
-				ret, new Position(x - 2, y - 1), super.getBoard());
+		addInCollectionIfValid(ret, new Position(x + 2, y + 1));
+		addInCollectionIfValid(ret, new Position(x + 2, y - 1));
+		addInCollectionIfValid(ret, new Position(x - 2, y + 1));
+		addInCollectionIfValid(ret, new Position(x - 2, y - 1));
 		return ret;
 	}
 

@@ -34,6 +34,12 @@ public class Position {
 		return x + y*ChessBoard.SIZE;
 	}
 	
+	public <T> boolean isOnBoard(Board<T> b) {
+		if (b == null)
+			return false;
+		return b.contains(this);
+	}
+	
 	public static <T> void addInCollectionIfOnBoard(
 			Collection<Position> c,
 			Position p,
