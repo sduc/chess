@@ -10,11 +10,7 @@ public class Knight extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private void addInCollectionIfValid(Collection<Position> pos, Position p) {
-		if (super.canBeAt(p)) {
-			pos.add(p);
-		}
-	}
+
 
 	@Override
 	public Collection<Position> possibleMoves() {

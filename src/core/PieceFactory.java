@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import core.Pawn.Direction;
+
 public class PieceFactory {
 	
 	private Player owner;
@@ -12,6 +14,8 @@ public class PieceFactory {
 	private int mainInitY;
 
 	private int pawnsInitY;
+	
+	private Direction pawnDirection;
 
 	private static final int LROOK_INIT_X = 0;
 	private static final int RROOK_INIT_X = 7;
@@ -31,6 +35,9 @@ public class PieceFactory {
 	private static final int MAIN_BLACK_INIT_Y = ChessBoard.SIZE - 1;
 	private static final int PAWNS_BLACK_INIT_Y = ChessBoard.SIZE - 2;
 	
+	private static final Direction WHITE_DIRECTION = Direction.Up;
+	private static final Direction BLACK_DIRECTION = Direction.Down;
+	
 	private static final int TOT_NUM_PIECES = ChessBoard.SIZE * 2;
 	
 	public PieceFactory(Player p, ChessBoard b) {
@@ -40,10 +47,12 @@ public class PieceFactory {
 		case WHITE:
 			this.mainInitY = PieceFactory.MAIN_WHITE_INIT_Y;
 			this.pawnsInitY = PieceFactory.PAWNS_WHITE_INIT_Y;
+			this.pawnDirection = WHITE_DIRECTION;
 			break;
 		case BLACK:
 			this.mainInitY = PieceFactory.MAIN_BLACK_INIT_Y;
 			this.pawnsInitY = PieceFactory.PAWNS_BLACK_INIT_Y;
+			this.pawnDirection = BLACK_DIRECTION;
 			break;
 		default:
 			assert(false);
@@ -112,7 +121,8 @@ public class PieceFactory {
 			pawns.add(new Pawn(
 					this.owner,
 					new Position(x, this.pawnsInitY),
-					board));
+					board,
+					this.pawnDirection));
 		}
 		return pawns;
 	}

@@ -51,6 +51,8 @@ public class Pawn extends Piece {
 			ret.add(p);
 		}
 		// TODO: add prise en passant, first move (2 positions forward
+		
+		return ret;
 	}
 
 }

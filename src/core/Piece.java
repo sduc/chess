@@ -157,5 +157,11 @@ public abstract class Piece {
 		return ret;
 	}
 	
+	public void addInCollectionIfValid(Collection<Position> pos, Position p) {
+		if (this.canBeAt(p)) {
+			pos.add(p);
+		}
+	}
+	
 
 }

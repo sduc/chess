@@ -1,7 +1,5 @@
 package core;
 
-import java.util.Collection;
-
 public class Position {
 	
 	private int x;
@@ -38,17 +36,6 @@ public class Position {
 		if (b == null)
 			return false;
 		return b.contains(this);
-	}
-	
-	public static <T> void addInCollectionIfOnBoard(
-			Collection<Position> c,
-			Position p,
-			Board<T> b) {
-		if (c == null || p == null || b == null)
-			return;
-		if (b.contains(p)) {
-			c.add(p);
-		}
 	}
 
 }
