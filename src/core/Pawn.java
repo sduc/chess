@@ -20,7 +20,8 @@ public class Pawn extends Piece {
 		}
 	}
 	
-	int direction;
+	private int direction;
+	boolean hasMoved = false;
 	
 	public Pawn(Player o, Position p, ChessBoard b, Direction direction) {
 		super(o,p,b);
@@ -52,7 +53,17 @@ public class Pawn extends Piece {
 		}
 		// TODO: add prise en passant, first move (2 positions forward
 		
+		if (!hasMoved) {
+			
+		}
+		
 		return ret;
+	}
+	
+	@Override
+	public Move move(Position p) throws IllegalMoveException {
+		hasMoved = true;
+		return super.move(p);
 	}
 
 }

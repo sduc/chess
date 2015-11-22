@@ -30,6 +30,7 @@ public class GameManager {
 		if (isFinished()) {
 			// the player that is finished is always the winner by definition
 			// TODO: make sure that this is true
+			// TODO: pat, draw,... make sure to handle these using the log history
 			winner = playerTurn();
 			return true;
 		}
@@ -45,7 +46,7 @@ public class GameManager {
 	
 	public boolean isFinished() {
 		//TODO: check if there is Check mate on the board 
-		//      and also need to find a way to get who won
+		//      and also need to find a way to get who wan
 		return false;
 	}
 
