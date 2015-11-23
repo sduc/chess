@@ -1,0 +1,11 @@
+package gui;
+
+import core.Position;
+
+public interface ChessBoardView {
+
+	public void highlightSquare(Position p);
+	public void moveSquareContent(Position src, Position dest);
+	public void removeSquareContent(Position p);
+	
+}

@@ -2,7 +2,6 @@ package controller;
 
 import core.GameManager;
 import core.Move;
-import core.Player;
 
 public class MoveListener {
 	
