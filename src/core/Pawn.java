@@ -36,19 +36,19 @@ public class Pawn extends Piece {
 		Board<Piece> board = super.getBoard();
 		
 		Position p = new Position(x, y + direction);
-		if (board.contains(p) && board.get(p) == null)
+		if (board.contains(p) && board.unsafeGet(p) == null)
 			ret.add(new Position(x, y + direction));
 		
 		p = new Position(x + 1, y + direction);
 		if (board.contains(p) &&
-				board.get(p) != null &&
-				!super.sameOwner(board.get(p))) {
+				board.unsafeGet(p) != null &&
+				!super.sameOwner(board.unsafeGet(p))) {
 			ret.add(p);
 		}
 		p = new Position(x - 1, y + direction);
 		if (board.contains(p) &&
-				board.get(p) != null &&
-				!super.sameOwner(board.get(p))) {
+				board.unsafeGet(p) != null &&
+				!super.sameOwner(board.unsafeGet(p))) {
 			ret.add(p);
 		}
 		// TODO: add prise en passant, first move (2 positions forward

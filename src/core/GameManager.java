@@ -1,6 +1,6 @@
 package core;
 
-public class GameManager {
+public class GameManager implements GameModel {
 	
 	private Player white;
 	private Player black;
@@ -22,7 +22,7 @@ public class GameManager {
 		return (whiteTurn) ? white : black;
 	}
 	
-	public boolean processTurn(Piece piece, Position pos) throws IllegalMoveException {
+	public boolean movePiece(Piece piece, Position pos) throws IllegalMoveException {
 		Player player = playerTurn();
 		
 		player.applyMove(piece, pos, board);
@@ -40,7 +40,7 @@ public class GameManager {
 		return false;
 	}
 	
-	public Player getWinner() {
+	public Player winner() {
 		return winner;
 	}
 	
@@ -48,6 +48,16 @@ public class GameManager {
 		//TODO: check if there is Check mate on the board 
 		//      and also need to find a way to get who wan
 		return false;
+	}
+
+	@Override
+	public Piece chessboardContent(Position p) throws PositionOutOfBoundsException {
+		return board.get(p);
+	}
+
+	@Override
+	public boolean isOwnedByCurrentPlayer(Piece p) {
+		return p.owner().equals(this.playerTurn());
 	}
 
 }

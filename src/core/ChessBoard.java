@@ -18,7 +18,17 @@ public class ChessBoard implements Board<Piece> {
 		}
 	}
 	
-	public Piece get(Position p) {
+	public Piece get(Position p) throws PositionOutOfBoundsException {
+		Piece ret = null;
+		try {
+			ret = board[p.xOrd()][p.yOrd()];
+		} catch (IndexOutOfBoundsException e) {
+			throw new PositionOutOfBoundsException();
+		}
+		return ret;
+	}
+	
+	public Piece unsafeGet(Position p) {
 		return board[p.xOrd()][p.yOrd()];
 	}
 
@@ -29,7 +39,7 @@ public class ChessBoard implements Board<Piece> {
 	}
 	
 	public void putPiece(Piece p) {
-		Piece boardPiece = get(p.position());
+		Piece boardPiece = unsafeGet(p.position());
 		if (boardPiece != null && boardPiece != p) {
 			/*
 			 * TODO: either throw an exception or return something else

@@ -59,11 +59,14 @@ public abstract class Piece {
 	}
 	
 	private Piece captures(Position p) {
-		return board.get(p);
+		
+		return board.unsafeGet(p);
 	}
 	
 	private boolean isNonEmptyAndAddExceptIfSelfOwned(Collection<Position> c, Position p) {
-		Piece occup = getBoard().get(p);
+		
+		Piece occup = board.unsafeGet(p);
+		
 		if (occup != null) {
 			/* if the piece occupying is not from the same player */
 			if (!sameOwner(occup)) {
@@ -161,6 +164,10 @@ public abstract class Piece {
 		if (this.canBeAt(p)) {
 			pos.add(p);
 		}
+	}
+	
+	public Player owner() {
+		return this.owner;
 	}
 	
 
