@@ -3,8 +3,12 @@ package controller;
 import core.Player;
 import core.Position;
 
-public class WonControllerState implements ControllerState {
+public class PlayerWonControllerState implements ControllerState {
 
+	public PlayerWonControllerState() {
+		// TODO here we want to say to the view that the game is won
+	}
+	
 	@Override
 	public Player player(Controller ctx) {
 		// TODO Auto-generated method stub

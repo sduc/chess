@@ -2,14 +2,17 @@ package controller;
 
 import gui.ChessBoardView;
 import core.GameModel;
+import core.Position;
 
 
 public class Controller {
 	
+	/**
 	private final static PlayerNoSelectionControllerState NO_SELECTION_STATE
 		= new PlayerNoSelectionControllerState();
 	private final static PlayerMovedControllerState MOVED_STATE
 		= new PlayerMovedControllerState();
+	**/
 	
 	private ControllerState state;
 	
@@ -31,6 +34,10 @@ public class Controller {
 	
 	public void setState(ControllerState nextState) {
 		state = nextState;
+	}
+	
+	public void selectSquare(Position p) throws IllegalSelectionException {
+		state.selectSquare(this, p);
 	}
 
 }
