@@ -2,7 +2,7 @@ package gui;
 
 import core.Position;
 
-public interface ChessBoardView {
+public interface ChessView {
 
 	// TODO: Maybe we also want to use a state for holding the different views.
 	// Or we need some way to change view. Between the main board view, the winning view

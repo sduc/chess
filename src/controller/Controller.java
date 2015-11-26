@@ -1,6 +1,6 @@
 package controller;
 
-import gui.ChessBoardView;
+import gui.ChessView;
 import core.GameModel;
 import core.Position;
 
@@ -18,7 +18,7 @@ public class Controller {
 	
 	private GameModel model;
 	
-	private ChessBoardView view;
+	private ChessView view;
 	
 	public Controller() {
 		// TODO Auto-generated constructor stub
@@ -28,7 +28,7 @@ public class Controller {
 		return this.model;
 	}
 	
-	public ChessBoardView view() {
+	public ChessView view() {
 		return this.view;
 	}
 	
