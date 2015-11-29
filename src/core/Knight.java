@@ -3,10 +3,12 @@ package core;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import controller.PieceType.PieceEnum;
+
 public class Knight extends Piece {
 
 	public Knight(Player o, Position p, ChessBoard b) {
-		super(o,p,b);
+		super(o,p,b, PieceEnum.KNIGHT);
 		// TODO Auto-generated constructor stub
 	}
 	

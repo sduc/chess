@@ -3,10 +3,12 @@ package core;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import controller.PieceType.PieceEnum;
+
 public class King extends Piece {
 
 	public King(Player o, Position p, ChessBoard b) {
-		super(o, p,b);
+		super(o, p,b, PieceEnum.KING);
 	}	
 
 	@Override

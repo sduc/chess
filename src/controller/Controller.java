@@ -1,8 +1,11 @@
 package controller;
 
 import gui.ChessView;
+import core.ChessBoard;
 import core.GameModel;
+import core.Piece;
 import core.Position;
+import core.PositionOutOfBoundsException;
 
 
 public class Controller {
@@ -21,7 +24,21 @@ public class Controller {
 	private ChessView view;
 	
 	public Controller() {
-		// TODO Auto-generated constructor stub
+		model = null;
+		view = null;
+	}
+	
+	public Controller(GameModel model, ChessView view) {
+		this.model = model;
+		this.view = view;
+	}
+	
+	public void setModel(GameModel model) {
+		this.model = model;
+	}
+	
+	public void setView(ChessView view) {
+		this.view = view;
 	}
 	
 	public GameModel model() {
@@ -38,6 +55,23 @@ public class Controller {
 	
 	public void selectSquare(Position p) throws IllegalSelectionException {
 		state.selectSquare(this, p);
+	}
+	
+	public void queryBoardPopulate() {
+		for (int i = 0; i < model.chessBoardSize(); i++) {
+			for (int j = 0; j < model.chessBoardSize(); j++) {
+				Piece p = null;
+				try {
+					p = model.chessboardContent(new Position(i,j));
+				} catch (PositionOutOfBoundsException e) {
+					assert(false);
+				}
+				if (p != null) {
+					view.setSquareContent(p.position(), p.toPieceType());
+				}
+			}
+			
+		}
 	}
 
 }

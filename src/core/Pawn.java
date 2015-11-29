@@ -3,6 +3,8 @@ package core;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import controller.PieceType.PieceEnum;
+
 public class Pawn extends Piece {
 
 	enum Direction {
@@ -24,7 +26,7 @@ public class Pawn extends Piece {
 	boolean hasMoved = false;
 	
 	public Pawn(Player o, Position p, ChessBoard b, Direction direction) {
-		super(o,p,b);
+		super(o,p,b, PieceEnum.PAWN);
 		this.direction = direction.toInt();
 	}
 

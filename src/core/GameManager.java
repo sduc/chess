@@ -61,5 +61,9 @@ public class GameManager implements GameModel {
 	public boolean isOwnedByCurrentPlayer(Piece p) {
 		return p.owner().equals(this.playerTurn());
 	}
+	
+	public int chessBoardSize() {
+		return ChessBoard.SIZE;
+	}
 
 }

@@ -2,10 +2,12 @@ package core;
 
 import java.util.Collection;
 
+import controller.PieceType.PieceEnum;
+
 public class Queen extends Piece {
 
 	public Queen(Player o, Position p, ChessBoard b) {
-		super(o,p,b);
+		super(o,p,b, PieceEnum.QUEEN);
 	}
 
 	@Override

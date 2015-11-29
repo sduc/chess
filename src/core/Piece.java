@@ -3,16 +3,21 @@ package core;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import controller.PieceType;
+import controller.PieceType.PieceEnum;
+
 public abstract class Piece {
 	
 	private Player owner;
 	private Position position;
 	private ChessBoard board;
+	private PieceEnum enumerate;
 	
-	public Piece(Player owner, Position p, ChessBoard board) {
+	public Piece(Player owner, Position p, ChessBoard board, PieceEnum enumerate) {
 		this.owner = owner;
 		this.position = p;
 		this.board = board;
+		this.enumerate = enumerate;
 	}
 	
 	public Move move(Position p) throws IllegalMoveException {
@@ -170,5 +175,11 @@ public abstract class Piece {
 		return this.owner;
 	}
 	
+	public PieceType toPieceType() {
+		PieceType ptype = new PieceType();
+		ptype.color = this.owner.getColor();
+		ptype.enumerate = this.enumerate;
+		return ptype;
+	}
 
 }
