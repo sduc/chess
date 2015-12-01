@@ -19,6 +19,6 @@ public interface ChessView {
 	 * This function will populate the chess view with the pieces according to the model.
 	 * It will query the controller the populate the board
 	 */
-	public void populateBoard();
+	public void initGame();
 	
 }

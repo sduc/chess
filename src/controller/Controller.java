@@ -1,7 +1,6 @@
 package controller;
 
 import gui.ChessView;
-import core.ChessBoard;
 import core.GameModel;
 import core.Piece;
 import core.Position;
@@ -26,11 +25,17 @@ public class Controller {
 	public Controller() {
 		model = null;
 		view = null;
+		state = initState();
 	}
 	
+	private ControllerState initState() {
+		return new PlayerNoSelectionControllerState();
+	}
+
 	public Controller(GameModel model, ChessView view) {
 		this.model = model;
 		this.view = view;
+		this.state = initState();
 	}
 	
 	public void setModel(GameModel model) {
@@ -57,7 +62,12 @@ public class Controller {
 		state.selectSquare(this, p);
 	}
 	
-	public void queryBoardPopulate() {
+	public void initGame() {
+		model.init();
+		boardPopulate();
+	}
+	
+	public void boardPopulate() {
 		for (int i = 0; i < model.chessBoardSize(); i++) {
 			for (int j = 0; j < model.chessBoardSize(); j++) {
 				Piece p = null;

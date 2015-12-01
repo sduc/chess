@@ -11,11 +11,19 @@ public class GameManager implements GameModel {
 	private ChessBoard board;
 	
 	public GameManager() {
-		init();
+		initManager();
 	}
 	
-	private void init() {
+	private void initManager() {
 		board = new ChessBoard();
+		white = new Player("White Player", Color.WHITE);
+		black = new Player("Black Player", Color.BLACK);
+	}
+	
+	public void init() {
+		initManager();
+		white.initPieces(board);
+		black.initPieces(board);
 	}
 	
 	public Player playerTurn() {
@@ -59,6 +67,10 @@ public class GameManager implements GameModel {
 
 	@Override
 	public boolean isOwnedByCurrentPlayer(Piece p) {
+		if (p == null) {
+			assert(false);
+			return false;
+		}
 		return p.owner().equals(this.playerTurn());
 	}
 	

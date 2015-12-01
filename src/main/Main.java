@@ -13,7 +13,7 @@ public class Main {
 		ChessBoardComponent view = new ChessBoardComponent();
 		Controller ctr = new Controller(model, view);
 		view.setController(ctr);
-		view.populateBoard();
+		view.initGame();
 		MainWindow mFrame = new MainWindow(view);
 	}
 

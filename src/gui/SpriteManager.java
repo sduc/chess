@@ -15,11 +15,11 @@ public class SpriteManager {
 	
 	static SpriteManager instance = new SpriteManager();
 	
-	private static final String SPRITE_PATH = "res/img/sprite.svg.png";
+	private static final String SPRITE_PATH = "res/img/Chess_Pieces_Sprite.svg.png";
 	private BufferedImage image;
 	
-	public static final int SPRITE_X_WIDTH = 10;
-	public static final int SPRITE_Y_WIDTH = 10;
+	public static final int SPRITE_X_WIDTH = 330;
+	public static final int SPRITE_Y_WIDTH = 330;
 	
 	private static final int KING_X = 0;
 	private static final int QUEEN_X = 1;

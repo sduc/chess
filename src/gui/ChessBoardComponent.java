@@ -20,9 +20,7 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 	 */
 	private static final long serialVersionUID = -605242891926388361L;
 	private static final int GAP = 1;
-	private static final int SMALL_SZ = 400;
-	private static final int MEDIUM_SZ = 800;
-	private static final int LARGE_SZ = 1000;
+
 	
 	private SquareComponent [][] board;
 	private Controller controller = null;
@@ -37,14 +35,9 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 	}
 	
 	private void init() {
-		initSize();
 		initBoard();
 		initLayout();
 		initListener();
-	}
-	
-	private void initSize() {
-		this.setSize(MEDIUM_SZ, MEDIUM_SZ);
 	}
 	
 	private void initBoard() {
@@ -68,13 +61,13 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 		this.setLayout(boardLayout);
 		for (int i = 0; i < ChessBoard.SIZE; i++) {
 			for (int j = 0; j < ChessBoard.SIZE; j++) {
-				this.add(this.getSquare(new Position(i,j)));
+				this.add(this.getSquare(new Position(j,i)));
 			}
 		}
 	}
 	
-	public void populateBoard() {
-		controller.queryBoardPopulate();
+	public void initGame() {
+		controller.initGame();
 	}
 	
 	private void initListener() {
@@ -124,6 +117,7 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 	@Override
 	public void setSquareContent(Position p, PieceType piece) {
 		getSquare(p).setPiece(PieceComponent.createPiece(piece));
+		getSquare(p).repaint();
 	}
 
 }

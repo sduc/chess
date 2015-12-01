@@ -2,6 +2,7 @@ package core;
 
 public interface GameModel {
 
+	public void init();
 	public Player playerTurn();
 	public Player winner();
 	public boolean isFinished();

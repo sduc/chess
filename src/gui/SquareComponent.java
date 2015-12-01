@@ -39,7 +39,15 @@ public class SquareComponent extends JPanel {
 	}
 	
 	public void setPiece(PieceComponent pc) {
+		
+		if (pc != null) {
+			this.add(pc);
+		} else {
+			this.removeAll();
+		}
+		
 		piece = pc;
+		this.repaint();
 	}
 	
 	public PieceComponent getPiece() {

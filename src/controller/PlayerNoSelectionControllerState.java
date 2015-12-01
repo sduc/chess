@@ -31,6 +31,7 @@ public class PlayerNoSelectionControllerState implements ControllerState {
 		
 		try {
 			piece = ctx.model().chessboardContent(p);
+			if (piece == null) return;
 		} catch (PositionOutOfBoundsException e) {
 			throw new IllegalSelectionException();
 		}
