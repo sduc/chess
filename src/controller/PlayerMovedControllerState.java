@@ -14,8 +14,8 @@ public class PlayerMovedControllerState implements ControllerState {
 	@Override
 	public void selectSquare(Controller ctx, Position p)
 			throws IllegalSelectionException {
-		// TODO Auto-generated method stub
-		
+		ctx.model().changePlayer();
+		ctx.setState(new PlayerNoSelectionControllerState());
 	}
 
 }

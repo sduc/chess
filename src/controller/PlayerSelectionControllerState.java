@@ -39,6 +39,7 @@ public class PlayerSelectionControllerState implements ControllerState {
 	@Override
 	public void selectSquare(Controller ctx, Position p) throws IllegalSelectionException {
 		unhighlightPositions(ctx, selected.position(), possibleMoves);
+		Position src = selected.position();
 		if (possibleMoves.contains(p)) {
 			Piece captured = null;
 			try {
@@ -49,12 +50,13 @@ public class PlayerSelectionControllerState implements ControllerState {
 			
 			//TODO: see if we do the capture in the move square content
 			captureInView(ctx,captured, p);
-			ctx.view().moveSquareContent(selected.position(), p);
+			ctx.view().moveSquareContent(src, p);
 			
-			if (ctx.model().isFinished()) {
+			if (ctx.model().isGameFinished()) {
 				ctx.setState(new PlayerWonControllerState());
+				ctx.view().showWinMsg(ctx.model().playerTurn().name());
 			} else {
-				ctx.setState(new PlayerMovedControllerState());
+				ctx.setState(new PlayerNoSelectionControllerState());
 			}
 		} else {
 			ctx.setState(new PlayerNoSelectionControllerState());

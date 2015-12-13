@@ -42,14 +42,15 @@ public class SquareComponent extends JPanel {
 	}
 	
 	public void setPiece(PieceComponent pc) {
-		
+		System.out.println("set piece" + pc);
+		piece = pc;
 		if (pc != null) {
 			this.add(pc);
 		} else {
 			this.removeAll();
 		}
+		this.revalidate();
 		
-		piece = pc;
 		this.repaint();
 	}
 	
@@ -75,10 +76,8 @@ public class SquareComponent extends JPanel {
 	public void highlight(boolean on) {
 		if (piece != null)
 			piece.highlight(on);
-		else
-			updateColor(on);
+        updateColor(on);
 		this.repaint();
-		//might want to repaint maybe TODO
 	}
 
 	public Position getPosition() {

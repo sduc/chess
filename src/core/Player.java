@@ -9,8 +9,7 @@ public class Player {
 	private Color color;
 	private Collection<Piece> cemetry = new ArrayList<>();
 	private Collection<Piece> pieces = new ArrayList<>();
-	private MoveHistory history = new MoveHistory();
-	
+
 	public Player(String name, Color color) {
 		this.name = name;
 		this.color = color;
@@ -44,14 +43,6 @@ public class Player {
 		if (p == null || pos == null || b == null)
 			return false;
 		return p.possibleMoves().contains(pos);
-	}
-	
-	public void applyMove(Piece piece, Position pos, ChessBoard b) throws IllegalMoveException {
-		if (!isPlayerMoveValid(piece, pos, b))
-			throw new IllegalMoveException();
-		
-		Move move = piece.move(pos);
-		history.logMove(move);
 	}
 	
 	public void movePieceToCemetry(Piece dead) {

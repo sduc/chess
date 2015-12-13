@@ -4,6 +4,7 @@ public class GameManager implements GameModel {
 	
 	private Player white;
 	private Player black;
+	private MoveHistory history;
 	private Player winner = null;
 	
 	private boolean whiteTurn = true;
@@ -18,6 +19,7 @@ public class GameManager implements GameModel {
 		board = new ChessBoard();
 		white = new Player("White Player", Color.WHITE);
 		black = new Player("Black Player", Color.BLACK);
+		history = new MoveHistory();
 	}
 	
 	public void init() {
@@ -32,9 +34,12 @@ public class GameManager implements GameModel {
 	
 	public Piece movePiece(Piece piece, Position pos) throws IllegalMoveException {
 		Player player = playerTurn();
-		
-		player.applyMove(piece, pos, board);
-		
+
+		Move move = piece.move(pos);
+		//player.applyMove(piece, pos, board);
+		history.logMove(move);
+
+		// FIXME: move this in another function
 		if (isCheckMate()) {
 			// the player that is finished is always the winner by definition
 			// TODO: make sure that this is true
@@ -42,9 +47,13 @@ public class GameManager implements GameModel {
 			winner = playerTurn();
 		}
 		
-		whiteTurn = !whiteTurn;
+		changePlayer();
 		
-		return null;
+		return move.capturedPiece;
+	}
+
+	public void changePlayer() {
+		whiteTurn = !whiteTurn;
 	}
 	
 	private boolean isCheckMate() {
@@ -56,7 +65,7 @@ public class GameManager implements GameModel {
 		return winner;
 	}
 	
-	public boolean isFinished() {
+	public boolean isGameFinished() {
 		return winner != null;
 	}
 

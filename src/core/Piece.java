@@ -19,6 +19,13 @@ public abstract class Piece {
 		this.board = board;
 		this.enumerate = enumerate;
 	}
+
+	private void moveOnBoard(Position dest) {
+		assert(dest != null);
+
+		board.set(this.position, null);
+		board.set(dest, this);
+	}
 	
 	public Move move(Position p) throws IllegalMoveException {
 		if (!possibleMoves().contains(p)) {
@@ -26,10 +33,12 @@ public abstract class Piece {
 		}
 		
 		Piece captured = this.captures(p);
-		captured.capture();
+		if (captured != null)
+            captured.capture();
 		
 		Move ret = new Move(this.owner, this.position, p, this, captured);
 
+		moveOnBoard(p);
 		this.position = p;
 		return ret;
 	}

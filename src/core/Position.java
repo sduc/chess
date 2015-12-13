@@ -38,4 +38,8 @@ public class Position {
 		return b.contains(this);
 	}
 
+	@Override
+	public String toString() {
+		return "[" + xOrd() + "," + yOrd() + "]";
+	}
 }

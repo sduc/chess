@@ -5,10 +5,11 @@ public interface GameModel {
 	public void init();
 	public Player playerTurn();
 	public Player winner();
-	public boolean isFinished();
+	public boolean isGameFinished();
 	public Piece chessboardContent(Position p) throws PositionOutOfBoundsException;
 	public boolean isOwnedByCurrentPlayer(Piece p);
 	public int chessBoardSize();
+	public void changePlayer();
 	
 	/**
 	 * Move a piece to a position

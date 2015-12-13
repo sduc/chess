@@ -69,7 +69,13 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 	public void initGame() {
 		controller.initGame();
 	}
-	
+
+	@Override
+	public void showWinMsg(String name) {
+		EndMsg end = new EndMsg(name);
+		end.show();
+	}
+
 	private void initListener() {
 		
 		this.addMouseListener(new MouseAdapter() {
@@ -100,6 +106,7 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 
 	@Override
 	public void moveSquareContent(Position src, Position dest) {
+		System.out.println("src = " + src + ", dest = " + dest);
 		getSquare(dest).setPiece(getSquare(src).getPiece());
 		removeSquareContent(src);
 	}
@@ -117,7 +124,6 @@ public class ChessBoardComponent extends JComponent implements ChessView {
 	@Override
 	public void setSquareContent(Position p, PieceType piece) {
 		getSquare(p).setPiece(PieceComponent.createPiece(piece));
-		getSquare(p).repaint();
 	}
 
 }

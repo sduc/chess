@@ -20,5 +20,6 @@ public interface ChessView {
 	 * It will query the controller the populate the board
 	 */
 	public void initGame();
-	
+
+	void showWinMsg(String name);
 }
