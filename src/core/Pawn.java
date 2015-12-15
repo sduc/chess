@@ -54,9 +54,10 @@ public class Pawn extends Piece {
 			ret.add(p);
 		}
 		// TODO: add prise en passant, first move (2 positions forward
-		
-		if (!hasMoved) {
-			
+
+		p = new Position(x, y + 2*direction);
+		if (!hasMoved && board.unsafeGet(p) == null) {
+			ret.add(new Position(x, y + 2*direction));
 		}
 		
 		return ret;
@@ -64,8 +65,9 @@ public class Pawn extends Piece {
 	
 	@Override
 	public Move move(Position p) throws IllegalMoveException {
+		Move m = super.move(p);
 		hasMoved = true;
-		return super.move(p);
+		return m;
 	}
 
 }

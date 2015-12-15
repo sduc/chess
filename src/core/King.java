@@ -24,7 +24,7 @@ public class King extends Piece {
 		addInCollectionIfValid(moves, new Position(x, y + 1));
 		addInCollectionIfValid(moves, new Position(x + 1, y + 1));
 		addInCollectionIfValid(moves, new Position(x + 1, y - 1));
-		addInCollectionIfValid(moves, new Position(x - 1, y + 1));
+		addInCollectionIfValid(moves, new Position(x + 1, y));
 		
 		// check if we can do castling for the king this implies moving more pieces
 		
